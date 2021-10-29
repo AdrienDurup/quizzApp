@@ -1,14 +1,15 @@
 import { sequelize } from "../database";
 import { DataTypes, Model } from "sequelize";
 
-export class Answer extends Model {}
+export class Quizz extends Model {}
 
-Answer.init(
+Quizz.init(
 	{
+		title: DataTypes.TEXT,
 		description: DataTypes.TEXT,
 	},
 	{
 		sequelize,
-		tableName: "answer",
+		tableName: "quizz",
 	}
 );

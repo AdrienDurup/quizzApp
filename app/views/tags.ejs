@@ -1,0 +1,16 @@
+
+<%- include('partials/header') %>
+
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h2 class="h1 display-4">O'Quiz</h2>
+            <p class="lead">Voici une liste des différents sujets présent sur O'quiz</p>
+          </div>
+
+        <div class="row">
+
+            <% for(element of result){ %>
+                <%- include('partials/tag',{element:element}) %>
+            <% } %>
+
+        </div>
+<%- include('partials/footer') %>

@@ -1,0 +1,46 @@
+<%- include('partials/header') %>
+
+
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h2 class="h1 display-4">
+            <%=result.title%>
+        </h2>
+        <p class="lead">
+            <%=result.description%>
+        </p>
+        <p class="font-weight-bold">par <%= result.author.fullname %>
+        </p>
+        <p class="lead">4 questions</p>
+    </div>
+    <div class="row">
+        <% for(const tag of result.tags) { %>
+            <div class="col-3 p-4 text-center">
+                <a class="btn btn-block btn-lg tag tag--<%=tag.name.toLowerCase()%>" href="/tag/<%=tag.id%>">
+                    <%= tag.name %>
+                </a>
+            </div>
+            <% } %>
+    </div>
+
+    <div class="row">
+        <% for (const element of result.questions){%>
+            <div class="col-12">
+                <label class="badge level level--<%=element.level.name.toLowerCase()%>">
+                    <%=element.level.name%>
+                </label>
+                <h4>
+                    <%=element.question%>
+                </h4>
+                <ul>
+                    <% for (const [index, el] of element.answers.entries()){%>
+                        <li>
+                            <%=index%>. <%=el.description%>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+            <%}%>
+
+    </div>
+
+    <%- include('partials/footer') %>

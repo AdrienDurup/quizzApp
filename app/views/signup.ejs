@@ -1,0 +1,48 @@
+
+<%- include('partials/header') %>
+
+
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h2 class="h1 display-4">S'inscrire sur O'Quiz</h2>
+            <p class="lead">Inscrivez vous pour profiter des quizz !</p>
+        </div>
+
+        <form action="/signup" method="POST" class="form-signin">
+
+            <div class="form-label-group">
+                <input type="lastname" class="form-control" id="lastname" name="lastname"
+                    aria-describedby="lastnameHelp" placeholder="Votre nom">
+                <label for="lastname">Votre nom</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="firstname" class="form-control" id="firstname" name="firstname"
+                    aria-describedby="firstnameHelp" placeholder="Votre prénom">
+                <label for="firstname">Votre prénom</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                    placeholder="Votre courriel" required>
+                <label for="email">Votre courriel</label>
+                <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais votre courriel.</small>
+            </div>
+
+            <div class="form-label-group">
+                <input type="password" class="form-control" id="password" name="password" required
+                    placeholder="Votre mot de mot de passe">
+                <label for="password">Votre mot de mot de passe</label>
+            </div>
+
+
+            <div class="form-label-group">
+                <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required
+                    placeholder="Confirmez votre mot de passe">
+                <label for="passwordConfirm">Confirmez votre mot de passe</label>
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </div>
+        </form>
+<%- include('partials/footer') %>

@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+
+
+
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h2 class="h1 display-4">Se connecter sur O'Quiz</h2>
+            <p class="lead">Une application sympa pour répondre à des questions cool.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-6 offset-3">
+                <form action="" method="POST" class="form-signup">
+
+                    <div class="form-label-group">
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                            placeholder="Votre courriel" required>
+                        <label for="email">Votre courriel</label>
+                    </div>
+
+                    <div class="form-label-group">
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Votre mot de passe" required>
+                        <label for="password">Votre mot de passe</label>
+                    </div>
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Se souvenir de moi
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+                </form>
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>
+  

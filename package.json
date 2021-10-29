@@ -1,28 +1,35 @@
 {
-  "name": "oquiz",
-  "version": "1.0.0",
-  "description": "Pour commencer, il faut mettre en place la base de données !",
-  "main": "pseudoController.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/O-clock-XIII/oquiz-blue.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/O-clock-XIII/oquiz-blue/issues"
-  },
-  "homepage": "https://github.com/O-clock-XIII/oquiz-blue#readme",
-  "dependencies": {
-    "dotenv": "^10.0.0",
-    "pg": "^8.7.1",
-    "sequelize": "^6.8.0"
-  }
+	"name": "oquiz-blue-atelier-pp-MrSnakeDoc",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "NODE_ENV=dev nodemon -r dotenv/config index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/O-clock-XIII/oquiz-blue-atelier-pp-MrSnakeDoc.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/O-clock-XIII/oquiz-blue-atelier-pp-MrSnakeDoc/issues"
+	},
+	"homepage": "https://github.com/O-clock-XIII/oquiz-blue-atelier-pp-MrSnakeDoc#readme",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"dotenv": "^10.0.0",
+		"ejs": "^3.1.6",
+		"esm": "^3.2.25",
+		"express": "^4.17.1",
+		"express-session": "^1.17.2",
+		"lodash.merge": "^4.6.2",
+		"pg": "^8.7.1",
+		"sequelize": "^6.8.0"
+	},
+	"prettier": {
+		"semi": true,
+		"useTabs": true
+	}
 }

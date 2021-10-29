@@ -1,13 +1,14 @@
-const sequelize = require('../database');
-const {DataTypes, Model} = require('sequelize');
+import { sequelize } from "../database";
+import { DataTypes, Model } from "sequelize";
 
-class Tag extends Model {};
+export class Tag extends Model {}
 
-Tag.init({
-    name: DataTypes.TEXT
-}, {
-    sequelize,
-    tableName: 'tag'
-});
-
-module.exports = Tag;
+Tag.init(
+	{
+		name: DataTypes.TEXT,
+	},
+	{
+		sequelize,
+		tableName: "tag",
+	}
+);
