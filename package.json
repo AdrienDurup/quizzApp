@@ -1,0 +1,28 @@
+{
+  "name": "oquiz",
+  "version": "1.0.0",
+  "description": "Pour commencer, il faut mettre en place la base de données !",
+  "main": "pseudoController.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-XIII/oquiz-blue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-XIII/oquiz-blue/issues"
+  },
+  "homepage": "https://github.com/O-clock-XIII/oquiz-blue#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "pg": "^8.7.1",
+    "sequelize": "^6.8.0"
+  }
+}

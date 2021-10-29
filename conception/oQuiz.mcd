@@ -1,0 +1,24 @@
+UTILISATEUR: ref_user, nom, prenom, email, password, role
+créé, 0N UTILISATEUR, 11 QUIZ
+QUIZ: ref_quiz, titre, description
+possède, 1N QUIZ, 0N THEME
+THEME: ref_theme, nom
+
+:
+contient, 0N QUIZ, 11 QUESTION
+
+NIVEAU: ref_niveau, nom
+concerne, 0N NIVEAU, 11 QUESTION
+QUESTION: ref_question, description, anecdote, wiki
+est proposée pour, 11 REPONSE, 0N QUESTION
+REPONSE: ref_reponse, description
+
+:
+:
+valide, 11 QUESTION, 01 REPONSE
+
+
+
+
+
+

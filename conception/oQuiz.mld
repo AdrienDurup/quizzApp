@@ -1,0 +1,16 @@
+niveau (id SERIAL, nom TEXT)
+
+question (id SERIAL, description TEXT, anecdote TEXT, wiki TEXT, #quiz_id INT, #niveau_id INT, #reponse_id INT) // ici, reponse_id pointe sur la BONNE reponse à la question
+reponse (id SERIAL, description TEXT, #question_id INT) // ici, question_id permet d'obtenir la liste des réponses possibles à une question
+
+utilisateur (id SERIAL, nom TEXT, prenom TEXT, email TEXT, password TEXT)
+quiz (id SERIAL, titre TEXT, description TEXT, #utilisateur_id INT)
+theme (id SERIAL, nom TEXT)
+
+
+quiz_appartient_theme (#quiz_id INT, #theme_id INT)
+
+
+cardi max à 1,n : clé étrangère dans la table qui a 1
+cardi max à n,n : on est obligé de rajouter une table pour faire la liaison
+cardi max à 1,1 : clé étrangère dans la table où ça parait le plus logique, le plus efficace

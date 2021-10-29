@@ -1,0 +1,97 @@
+.btn-primary, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle, .btn-primary.focus, .btn-primary:focus {
+    background-color: #f0f;
+    border-color: rgb(199, 0, 199);
+  }
+  
+  .btn-primary:hover {
+    background-color: rgb(199, 0, 199);
+    border-color: rgb(151, 0, 151);
+  }
+  
+  .bg-primary {
+    background-color: #f0f!important;
+  }
+  
+  .form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+  }
+  
+  .form-signin {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    margin: auto;
+  }
+  
+  .level--beginner,
+  .level--débutant {
+    color: #28a745;
+  }
+  
+  .level--medium,
+  .level--confirmé {
+    color: #ffc107;
+  }
+  
+  .level--expert {
+    color: #dc3545;
+  }
+  
+  .tag {}
+  
+  .tag--cinéma {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+  }
+  
+  .tag--technologie {
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+  }
+  
+  .tag--gastronomie {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+  }
+  
+  .tag--littérature {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+  }
+  
+  .tag--histoire {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+  }
+  
+  .tag--animaux {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+  }
+  
+  .tag--nature {
+    color: #523e02;
+    background-color: #d3c493;
+    border-color: #c9b579;
+  }
+  
+  .tag--astronomie {
+    color: #1b1e21;
+    background-color: #d6d8d9;
+    border-color: #c6c8ca;
+  }
+  
+  .tag--géographie {
+    color: #0c3b17;
+    background-color: #86a78e;
+    border-color: #889e8d;
+  }
