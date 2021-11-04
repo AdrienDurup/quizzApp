@@ -1,7 +1,7 @@
-import { sequelize } from "../database";
-import { DataTypes, Model } from "sequelize";
+const sequelize =require("../database");
+const { DataTypes, Model } =require("sequelize");
 
-export class Tag extends Model {}
+class Tag extends Model {}
 
 Tag.init(
 	{
@@ -12,3 +12,4 @@ Tag.init(
 		tableName: "tag",
 	}
 );
+module.exports=Tag;

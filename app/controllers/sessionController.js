@@ -1,6 +1,6 @@
-import bcrypt from "bcrypt";
-import { index } from "../models"
-import { User } from "../models/user";
+const bcrypt = require('bcrypt');
+const { User } = require("../models");
+
 require("dotenv").config();
 
 const saltRounds = process.env.PWD_SALTROUNDS;
@@ -15,25 +15,45 @@ const sessionController = {
         next();
     },
     signUp: async (req, res) => {
-        const email = req.body.email;
-        const firstname = req.body.firstname === '' ? null : req.body.firstname;
-        const lastname = req.body.lastname === '' ? null : req.body.lastname;
-        let password;
-        if (req.body.password) {
-            password = await bcrypt.hash(req.body.password, Number(saltRounds));
-        };
         try {
-            const user = await new index.User({
+            const email = req.body.email;
+            const firstname = req.body.firstname === '' ? null : req.body.firstname;
+            const lastname = req.body.lastname === '' ? null : req.body.lastname;
+            let password;
+            if (req.body.password) {
+                password = await bcrypt.hash(req.body.password, Number(saltRounds));
+            };
+            const userCheck = await User.findOne({
+                where: {
+                    email: email
+                }
+            });
+
+            console.log("userCheck", userCheck);
+
+            if (userCheck) {
+                // il ya déjà un user avec cet email en BDD, on envoie une erreur
+                return res.render('signup', { error: 'Un utilisateur avec cet email existe déjà.' });
+            };
+
+            if (req.body.password !== req.body.passwordConfirm) {
+                //le password et la vérif ne matchent pas, on envoie une erreur
+                return res.render('signup', { error: 'La confirmation du mot de passe est incorrecte.' });
+            };
+
+            const user = await new User({
                 firstname,
                 lastname,
                 email,
                 password
             })
-                .save();
+            user.save();
+
+            res.redirect("/");
+
         } catch (err) {
             console.error(err);
-        }
-        res.redirect("/");
+        };
     },
 
     logIn: async (req, res) => {
@@ -42,17 +62,20 @@ const sessionController = {
                 email: req.body.email,
                 password: req.body.password,
             });
-            let result = await User.findAll({
+            let result = await User.findOne({
                 where: {
                     email: user.email
                 }
             });
+            if (!result) {
+                return res.render('login', { error: 'Vérifiez votre saisie.' });
+            };
             let isValid;
-            if (result[0] && req.body.password) {
-                isValid = await bcrypt.compare(req.body.password, result[0].password);
+            if (result && req.body.password) {
+                isValid = await bcrypt.compare(req.body.password, result.password);
             };
             if (isValid) {
-                user = result[0];
+                user = result;
                 req.session.user = user;
                 res.locals.user = user;
                 console.log(res.locals.user);
@@ -69,8 +92,8 @@ const sessionController = {
     logOut: async (req, res) => {
         try {
             // console.log("LOGIN 1 ?",req.session.login);
-            req.session.user=false;
-            res.locals.user=false;
+            req.session.user = false;
+            res.locals.user = false;
             res.redirect("/");
 
         } catch (err) {
@@ -81,4 +104,4 @@ const sessionController = {
 
 }
 
-module.exports = {sessionController};
+module.exports = sessionController;

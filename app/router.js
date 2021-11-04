@@ -1,10 +1,10 @@
-import express from "express";
+const express= require("express");
 // import session from "express-session";
-import adminController from "./controllers/adminController";
-import { mainController } from "./controllers/mainController";
-const  {sessionController} = require("./controllers/sessionController");
+const adminController = require( "./controllers/adminController");
+const mainController = require( "./controllers/mainController");
+const sessionController = require("./controllers/sessionController");
 
-export const router = express.Router();
+const router=express.Router();
 
 router.use(express.static("./app/public"));
 
@@ -24,3 +24,6 @@ router.post("/signup",sessionController.signUp);
 router.post("/login",sessionController.logIn);
 router.get("/logout",sessionController.logOut);
 router.get("/admin",adminController.accessControl,adminController.adminRoot);
+
+
+module.exports= router;
