@@ -1,14 +1,13 @@
-import config from "./config";
-
 const { Sequelize } = require("sequelize");
+require("dotenv").config();
 
 export const sequelize = new Sequelize(
-	config.db,
-	config.db_user,
-	config.db_pwd,
+	process.env.DB,
+	process.env.DB_USER,
+	process.env.DB_PWD,
 	{
-		host: config.db_host,
-		port: config.db_port,
+		host: process.env.DB_HOST,
+		port: process.env.DB_PORT,
 		define: {
 			timestamps: false,
 			underscored: true,

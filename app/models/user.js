@@ -18,6 +18,7 @@ User.init(
 		password: DataTypes.TEXT,
 		firstname: DataTypes.TEXT,
 		lastname: DataTypes.TEXT,
+		role:DataTypes.STRING,
 	},
 	{
 		sequelize,

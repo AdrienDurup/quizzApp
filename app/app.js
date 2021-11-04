@@ -1,15 +1,17 @@
 import express from "express";
-import ejs from "ejs";
 import session from "express-session";
-import config from "./config";
 import { router } from "./router";
+require("dotenv").config();
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
+const port=process.env.PORT;
+const host=process.env.HOST;
+
 app.use(
 	session({
-		secret: config.secret,
+		secret: process.env.SECRET,
 		resave: true,
 		saveUninitialized: true,
 		cookie: {
@@ -23,6 +25,6 @@ app.use(router);
 app.set("views", "./app/views");
 app.set("view engine", "ejs");
 
-app.listen(config.port, async () => {
-	console.log(`Server is running on http://${config.host}:${config.port}`);
+app.listen(port, () => {
+	console.log(`Server is running on http://${host}:${port}`);
 });

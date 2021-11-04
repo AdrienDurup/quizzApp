@@ -25,7 +25,13 @@
             <a class="p-2 text-white" href="/">Accueil</a>
             <a class="p-2 text-white" href="/tags">Sujets</a>
             <a class="p-2 text-white" href="/signup">S'inscrire</a>
-            <a class="p-2 text-white" href="/login">Se connecter</a>
+                <% console.log("locals",user);
+                if(!locals.user){%>
+                    <a class="p-2 text-white" href="/login"> Se connecter </a>
+                    <%}else{%>
+                        <a class="p-2 text-white" href="/logout"> Se déconnecter </a>
+                        <%}%>
+           
         </nav>
     </header>
     <main class="container">

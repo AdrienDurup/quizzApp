@@ -1,15 +1,20 @@
+:root{
+  --main-color:rgb(93, 146, 102);
+  --main-color-dark:rgb(106, 167, 116);
+  --main-color-border:rgb(89, 141, 98);
+}
 .btn-primary, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle, .btn-primary.focus, .btn-primary:focus {
-    background-color: #f0f;
-    border-color: rgb(199, 0, 199);
+    background-color: var(--main-color);
+    border-color: var(--main-color-dark);
   }
   
   .btn-primary:hover {
-    background-color: rgb(199, 0, 199);
-    border-color: rgb(151, 0, 151);
+    background-color: var(--main-color-dark);
+    border-color: var(--main-color-border);
   }
   
   .bg-primary {
-    background-color: #f0f!important;
+    background-color: var(--main-color)!important;
   }
   
   .form-signin {
