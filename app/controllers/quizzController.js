@@ -50,7 +50,7 @@ const quizzController = {
                     if (sqlzRes.good_answer.id === userAnswerId) {
                         score.total++;
                     };
-                    sqlzRes.userRes = sqlzRes.answers.find(el => el.id = userAnswerId);
+                    sqlzRes.userRes = sqlzRes.answers.find(el => el.id === userAnswerId);
                     score.questRes.push(sqlzRes);
                 };
                 console.log("scoreTolat", score.total);
