@@ -11,18 +11,6 @@ const mainController = {
         res.status(200).render("index", { result });
     },
 
-    quizzPage: async (req, res) => {
-        let result = await Quizz.findByPk(Number(req.params.id), {
-            include: ['tags', 'author', {
-                association: "questions",
-                include: ['level', 'answers']
-            }],
-
-        });
-        res.status(200).render("quizz", { result });
-
-    },
-
     tagsPage: async (req, res) => {
         let result = await Tag.findAll();
         res.status(200).render("tags", { result });

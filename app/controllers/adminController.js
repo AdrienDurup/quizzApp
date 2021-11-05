@@ -5,7 +5,7 @@ const adminController = {
         if (user && user.role === "admin") {
             next();
         } else {
-            res.status(403).send("E 403. Access denied.");
+            res.status(401).send("E 401. Access denied.");
         }
     },
     adminRoot: (req, res) => {

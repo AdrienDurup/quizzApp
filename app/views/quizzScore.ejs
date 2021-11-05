@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h2 class="h1 display-4">
+       Score
+        </h2>
+        <p class="lead">
+           <%=score.total%>
+        </p>
+    </div>
+
+    <div class="row">
+    </div>
+
+    <div class="row">
+        <% for (const el of score.questRes){%>
+            <div class="col-12">
+                <h4>
+                    <%=el.question%>
+                </h4>
+                <ol>
+                        <li class="">
+                            <%=el.userAnswer.description%>
+                        </li>
+                        <% } %>
+                </ol>
+            </div>
+            <%}%>
+            <button class="quizz_form__validation btn btn-lg btn-primary btn-block">Envoyer</button>
+        </form>
+
+    </div>
+
+    <%- include('partials/footer') %>
