@@ -19,8 +19,13 @@
                 <h4>
                     <%=el.question%>
                 </h4>
-  <p>
-                            <%=el.userRes.description%>
+  <p class="quizz__answer 
+    <%const answClass=(el.userRes.id===el.good_answer.id)?"quizz__answer--good":"quizz__answer--bad"%>
+      <%=answClass%>
+    ">
+    <%=el.userRes.description%>
+   
+                            
   </p>
                 </ol>
             </div>

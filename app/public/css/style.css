@@ -36,8 +36,18 @@
     color: red;
   }
 
-  .quizz_form__validation{
-    
+  /* .quizz_form__validation{
+
+  } */
+
+  .quizz__answer{
+
+  }
+  .quizz__answer--good{
+color: green;
+  }
+  .quizz__answer--bad{
+color: red;
   }
   
   .level--beginner,
