@@ -58,9 +58,9 @@ const quizzController = {
             /* 
             TODO récupérer la bonne réponse pour l’afficher ?
             */
-            res.render("quizzScore", { score: questRes });
+            res.render("quizzScore", { score });
         } catch (e) {
-            console.console.log(e);
+            console.log(e);
             res.status(500).send(e);
         };
     },
