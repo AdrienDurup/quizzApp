@@ -17,19 +17,19 @@ const quizzController = {
     },
     getQuizzScore: async (req, res) => {
         try {
-            const answers = req.body;//{question_id:answer_id,question_id:answer_id…}
-            // const answers = {//pour test
-            //     '1': '1',
-            //     '4': '778',
-            //     '7': '781',
-            //     '10': '784',
-            //     '13': '787',
-            //     '16': '790',
-            //     '19': '793',
-            //     '22': '796',
-            //     '25': '799',
-            //     '28': '802'
-            // }
+            // const answers = req.body;//{question_id:answer_id,question_id:answer_id…}
+            const answers = {//pour test
+                '1': '1',
+                '4': '778',
+                '7': '781',
+                '10': '784',
+                '13': '787',
+                '16': '790',
+                '19': '793',
+                '22': '796',
+                '25': '799',
+                '28': '802'
+            }
             console.log(req.body);
             const score = { total: 0, questRes: [] };
             let sqlzRes;
@@ -41,7 +41,7 @@ const quizzController = {
                 sqlzRes = await Question.findByPk(
                     Number(key),
                     {
-                        include: ['good_answer', 'answers']
+                        include: ['good_answer', 'answers','quizz']
                     }
                 );
 
@@ -51,6 +51,7 @@ const quizzController = {
                         score.total++;
                     };
                     sqlzRes.userRes = sqlzRes.answers.find(el => el.id === userAnswerId);
+                    sqlzRes.quizz=sqlzRes.quizz.id;
                     score.questRes.push(sqlzRes);
                 };
                 console.log("scoreTolat", score.total);
