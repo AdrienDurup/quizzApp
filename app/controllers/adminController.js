@@ -66,13 +66,13 @@ const adminController = {
             console.log(req.body);
             const tag_id = Number(req.body.tag_id);
             const quizz_id = Number(req.body.quizz_id);
-            const tag= await Tag.findByPk(tag_id);
-                tag.addQuizzes(quizz_id);
-        res.redirect("/admin");
-    } catch(e) {
-        console.error(e);
-    };
-},
+            const tag = await Tag.findByPk(tag_id);
+            tag.addQuizzes(quizz_id);//la methode est créée automatiquement par Sequelize
+            res.redirect("/admin");
+        } catch (e) {
+            console.error(e);
+        };
+    },
 }
 
 module.exports = adminController;
