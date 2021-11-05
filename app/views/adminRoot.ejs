@@ -5,6 +5,7 @@
             <h4>Créer un tag</h4>
             <form class="admin_post__add" method="POST" action="/admin/updateTagList">
                 <select>
+                    <option value=""></option>
                     <%for(el of tags){ %>
                     <option value="<%=el.id%>"><%=el.name%></option>
                     <%}%>

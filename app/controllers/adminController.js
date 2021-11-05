@@ -10,16 +10,27 @@ const adminController = {
             res.status(401).send("E 401. Access denied.");
         }
     },
-    adminRoot: (req, res) => {
-        res.status(200).render("adminRoot");
+    adminRoot: async (req, res) => {
+        try {
+                const tags = await Tag.findAll();
+            // if(!found[1]){
+            //     found[0].save()
+            // }
+            res.status(200).render("adminRoot",{tags});
+        } catch (e) {
+            console.error(e);
+        };
+
+
     },
     updateTags: async (req, res) => {
         try {
+            console.log(req.body);
             if (!req.body.id) {
                 const found = await Tag.findOrCreate(
                     {
                         where: {
-                            name: req.body.name,
+                            name: req.body.tagName,
                         }
                     }
                 );
@@ -30,7 +41,7 @@ const adminController = {
             // if(!found[1]){
             //     found[0].save()
             // }
-            res.redirect("admin");
+            res.redirect("/admin");
         } catch (e) {
             console.error(e);
         };
