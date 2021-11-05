@@ -27,6 +27,7 @@ router.post("/signup",sessionController.signUp);
 router.post("/login",sessionController.logIn);
 router.get("/logout",sessionController.logOut);
 router.get("/admin",adminController.accessControl,adminController.adminRoot);
+router.get("/admin/updateTagList",adminController.accessControl,adminController.updateTags)
 
 
 module.exports= router;

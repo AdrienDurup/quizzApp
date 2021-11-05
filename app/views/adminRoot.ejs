@@ -1,4 +1,23 @@
-
 <%- include('partials/header') %>
-Hello, master <%=locals.user.firstname%> !
-<%- include('partials/footer') %>
+    Hello, master <%=locals.user.firstname%> !
+
+        <div class="admin_post">
+            <h4>Créer un tag</h4>
+            <form class="admin_post__add" method="POST" action="/admin/updateTagList">
+                <select>
+                    <%for(el of tags){ %>
+                    <option value="<%=el.id%>"><%=el.name%></option>
+                    <%}%>
+                </select>
+                
+                <label for="tagName">nom du tag</label>
+                <input type="text" name="tagName">
+                <button>Ajouter</button>
+            </form>
+         <%#   <form class="admin_post__add" method="POST" action="/admin/updateTag">
+                <label for="tagName"></label>
+                <input type="text" name="tagName">
+                <button>Ajouter</button>
+            </form>%>
+        </div>
+        <%- include('partials/footer') %>
