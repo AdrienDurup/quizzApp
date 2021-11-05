@@ -1,4 +1,5 @@
 const { Tag } = require("../models");
+const User = require("../models/user");
 
 const adminController = {
     accessControl: (req, res, next) => {
@@ -12,11 +13,11 @@ const adminController = {
     },
     adminRoot: async (req, res) => {
         try {
-                const tags = await Tag.findAll();
+            const tags = await Tag.findAll();
             // if(!found[1]){
             //     found[0].save()
             // }
-            res.status(200).render("adminRoot",{tags});
+            res.status(200).render("adminRoot", { tags });
         } catch (e) {
             console.error(e);
         };
@@ -35,7 +36,10 @@ const adminController = {
                     }
                 );
             } else {
-
+                const id =Number(req.body.id);
+                const tag= await Tag.findByPk(id);
+                tag.name=req.body.name;
+                tag.save();
             };
 
             // if(!found[1]){

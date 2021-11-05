@@ -4,15 +4,15 @@
         <div class="admin_post">
             <h4>Créer un tag</h4>
             <form class="admin_post__add" method="POST" action="/admin/updateTagList">
-                <select>
+                <select name="id">
                     <option value=""></option>
                     <%for(el of tags){ %>
                     <option value="<%=el.id%>"><%=el.name%></option>
                     <%}%>
                 </select>
                 
-                <label for="tagName">nom du tag</label>
-                <input type="text" name="tagName">
+                <label for="name">nom du tag</label>
+                <input type="text" name="name">
                 <button>Ajouter</button>
             </form>
          <%#   <form class="admin_post__add" method="POST" action="/admin/updateTag">
