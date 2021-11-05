@@ -1,5 +1,4 @@
-const { Tag } = require("../models");
-const User = require("../models/user");
+const { Tag, Quizz, User } = require("../models");
 
 const adminController = {
     accessControl: (req, res, next) => {
@@ -13,11 +12,21 @@ const adminController = {
     },
     adminRoot: async (req, res) => {
         try {
-            const tags = await Tag.findAll();
-            // if(!found[1]){
-            //     found[0].save()
-            // }
-            res.status(200).render("adminRoot", { tags });
+            const tags = Tag.findAll(
+                {
+                    order: ["name"]
+                }
+
+            );
+            const quizz = Quizz.findAll(
+                {
+                    order: ["title"]
+                }
+
+            );
+            const data = await Promise.all([tags, quizz]);
+            console.log(data);
+            res.status(200).render("adminRoot", { tags: data[0], quizzes: data[1] });
         } catch (e) {
             console.error(e);
         };
@@ -27,46 +36,43 @@ const adminController = {
     updateTags: async (req, res) => {
         try {
             console.log(req.body);
-            if (!req.body.id) {
-                const found = await Tag.findOrCreate(
-                    {
-                        where: {
-                            name: req.body.tagName,
+            /* créer */
+            if (req.body.name) {
+                if (!req.body.id) {
+                    const found = await Tag.findOrCreate(
+                        {
+                            where: {
+                                name: req.body.tagName,
+                            }
                         }
-                    }
-                );
-            } else {
-                const id =Number(req.body.id);
-                const tag= await Tag.findByPk(id);
-                tag.name=req.body.name;
-                tag.save();
+                    );
+                    /* update */
+                } else {
+                    const id = Number(req.body.id);
+                    const tag = await Tag.findByPk(id);
+                    tag.name = req.body.name;
+                    tag.save();
+                };
             };
 
-            // if(!found[1]){
-            //     found[0].save()
-            // }
+
             res.redirect("/admin");
         } catch (e) {
             console.error(e);
         };
     },
-    // addTag: async (req, res) => {
-    //     try {
-    //         const found= await Tag.findOrCreate(
-    //             {
-    //                 where:{
-    //                     name:req.body.name,
-    //                 }
-    //             }
-    //         );
-    //         // if(!found[1]){
-    //         //     found[0].save()
-    //         // }
-
-    //     } catch (e) {
-    //         console.error(e);
-    //     };
-    // },
+    addTagToQuizz: async (req, res) => {
+        try {
+            console.log(req.body);
+            const tag_id = Number(req.body.tag_id);
+            const quizz_id = Number(req.body.quizz_id);
+            const tag= await Tag.findByPk(tag_id);
+                tag.addQuizzes(quizz_id);
+        res.redirect("/admin");
+    } catch(e) {
+        console.error(e);
+    };
+},
 }
 
 module.exports = adminController;

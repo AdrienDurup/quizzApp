@@ -2,8 +2,9 @@
     Hello, master <%=locals.user.firstname%> !
 
         <div class="admin_post">
-            <h4>Créer un tag</h4>
+
             <form class="admin_post__add" method="POST" action="/admin/updateTagList">
+                <h4>Créer ou modifier un tag</h4>
                 <select name="id">
                     <option value=""></option>
                     <%for(el of tags){ %>
@@ -11,9 +12,38 @@
                     <%}%>
                 </select>
                 
-                <label for="name">nom du tag</label>
+                <label for="name">
+                    nom du tag
+                </label>
                 <input type="text" name="name">
-                <button>Ajouter</button>
+                <button>Go</button>
+            </form>
+            
+            <form class="admin_post__add" method="POST" action="/admin/addTagToQuizz">
+                <h4>Ajouter un tag à un quizz</h4>
+
+                <label for="tag_id">
+                    quizz
+                <select name="tag_id">
+                    <option value=""></option>
+                    <%for(el of tags){ %>
+                    <option value="<%=el.id%>"><%=el.name%></option>
+                    <%}%>
+                </select>
+                </label>
+
+               
+                <label for="quizz_id">
+                    tag
+                    <select name="quizz_id">
+                        <option value=""></option>
+                        <%for(el of quizzes){ %>
+                        <option value="<%=el.id%>"><%=el.title%></option>
+                        <%}%>
+                    </select>
+                </label>
+                
+                <button>Go</button>
             </form>
          <%#   <form class="admin_post__add" method="POST" action="/admin/updateTag">
                 <label for="tagName"></label>
