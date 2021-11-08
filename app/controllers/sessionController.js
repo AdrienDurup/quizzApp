@@ -49,7 +49,7 @@ const sessionController = {
             })
             user.save();
 
-            res.redirect("/");
+            res.redirect("/login");
 
         } catch (err) {
             console.error(err);

@@ -24,9 +24,9 @@ const adminController = {
                 }
 
             );
-            const data = await Promise.all([tags, quizz]);
-            console.log(data);
-            res.status(200).render("adminRoot", { tags: data[0], quizzes: data[1] });
+            //Déconstruction d’Array : revoir
+            const [tagList, quizList] = await Promise.all([tags, quizz]);
+            res.status(200).render("adminRoot", { tags: tagList, quizzes: quizList });
         } catch (e) {
             console.error(e);
         };
@@ -42,7 +42,7 @@ const adminController = {
                     const found = await Tag.findOrCreate(
                         {
                             where: {
-                                name: req.body.tagName,
+                                name: req.body.name,
                             }
                         }
                     );
@@ -65,14 +65,38 @@ const adminController = {
         try {
             console.log(req.body);
             const tag_id = Number(req.body.tag_id);
+            // const tag_id =23;//test
             const quizz_id = Number(req.body.quizz_id);
             const tag = await Tag.findByPk(tag_id);
             tag.addQuizzes(quizz_id);//la methode est créée automatiquement par Sequelize
-            res.redirect("/admin");
         } catch (e) {
-            console.error(e);
+            adminController.addError(req, res, e, "Echec de la requête. Un élément spécifié n’est pas valide.");
+            // adminController.addError(req, res, e, "Echec de la requête. Un élément spécifié n’est pas valide.");
+        }finally{
+        res.redirect("/admin");
         };
     },
+    addError: (req, res, e, msg) => {
+        console.error(e);
+        if (!req.session.admin_errors) {
+            req.session.admin_errors = [];
+        };
+        res.locals.admin_errors = req.session.admin_errors;
+        res.locals.admin_errors.push(msg);
+    },
+    consumeError: (req, res, next) => {
+        res.locals.admin_errors=[];//pour etre sûr on fait un reset pour renvoyer un tableau vide en cas d’absence d’erreur
+        
+        if (req.session.admin_errors) {//s’il y a des messages d’erreur stockés,
+            res.locals.admin_errors=req.session.admin_errors;//on les met dans la réponse
+        };
+        //on efface les erreurs de la session afin qu’elle ne persiste pas entre 2 refresh, 
+        //puisque les messages seront consommés dans la prochaine vue
+        delete req.session.admin_errors;
+        // on passe à la route qui consommera les MSG
+        next();
+    }
+
 }
 
 module.exports = adminController;

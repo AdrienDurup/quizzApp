@@ -1,6 +1,8 @@
 // const { index } =require("../models");
 const {Quizz,Tag}=require("../models");
 
+/*
+ TODO try catch */
 const mainController = {
     root: async (req, res) => {
         let result = await Quizz.findAll(

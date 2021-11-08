@@ -123,3 +123,12 @@ color: red;
     text-decoration: unset;
     color: unset;
   }
+
+  /* ADMIN */
+
+  .admin_post__error_box{
+    color: red;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }

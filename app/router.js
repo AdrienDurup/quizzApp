@@ -26,10 +26,10 @@ router.get("/tag/:tag",mainController.tagContentPage);
 router.post("/signup",sessionController.signUp);
 router.post("/login",sessionController.logIn);
 router.get("/logout",sessionController.logOut);
-// router.get("/admin",adminController.adminRoot);
+// router.get("/admin",adminController.consumeError,adminController.adminRoot);
 // router.post("/admin/updateTagList",adminController.updateTags);
 // router.post("/admin/addTagToQuizz",adminController.addTagToQuizz);
-router.get("/admin",adminController.accessControl,adminController.adminRoot);
+router.get("/admin",adminController.accessControl,adminController.consumeError,adminController.adminRoot);
 router.post("/admin/updateTagList",adminController.accessControl,adminController.updateTags);
 router.post("/admin/addTagToQuizz",adminController.accessControl,adminController.addTagToQuizz);
 

@@ -3,54 +3,66 @@
 
         <div class="admin_post">
 
-            <form class="admin_post__add" method="POST" action="/admin/updateTagList">
-                <h4>Créer ou modifier un tag</h4>
-                <select name="id">
-                    <option value=""></option>
-                    <%for(el of tags){ %>
-                    <option value="<%=el.id%>"><%=el.name%></option>
-                    <%}%>
-                </select>
-                
-                <label for="name">
-                    nom du tag
-                </label>
-                <input type="text" name="name">
-                <button>Go</button>
-            </form>
-            
-            <form class="admin_post__add" method="POST" action="/admin/addTagToQuizz">
-                <h4>Ajouter un tag à un quizz</h4>
+            <% if(locals.admin_errors){ for (err of locals.admin_errors){ %>
+                <div class=admin_post__error_box>
+                    <%=err%>
+                </div>
+                <%}}%>
 
-                <label for="quizz_id">
-                    quizz
-                    <select name="quizz_id">
-                        <option value=""></option>
-                        <%for(el of quizzes){ %>
-                        <option value="<%=el.id%>"><%=el.title%></option>
-                        <%}%>
-                    </select>
-                </label>
+                    <form class="admin_post__add" method="POST" action="/admin/updateTagList">
+                        <h4>Créer ou modifier un tag</h4>
+                        <select name="id">
+                            <option value=""></option>
+                            <%for(el of tags){ %>
+                                <option value="<%=el.id%>">
+                                    <%=el.name%>
+                                </option>
+                                <%}%>
+                        </select>
 
-                <label for="tag_id">
-                    tag
-                <select name="tag_id">
-                    <option value=""></option>
-                    <%for(el of tags){ %>
-                    <option value="<%=el.id%>"><%=el.name%></option>
-                    <%}%>
-                </select>
-                </label>
+                        <label for="name">
+                            nom du tag
+                        </label>
+                        <input type="text" name="name">
+                        <button>Go</button>
+                    </form>
 
-               
+                    <form class="admin_post__add" method="POST" action="/admin/addTagToQuizz">
+                        <h4>Ajouter un tag à un quizz</h4>
 
-                
-                <button>Go</button>
-            </form>
-         <%#   <form class="admin_post__add" method="POST" action="/admin/updateTag">
-                <label for="tagName"></label>
-                <input type="text" name="tagName">
-                <button>Ajouter</button>
-            </form>%>
+                        <label for="quizz_id">
+                            quizz
+                            <select name="quizz_id">
+                                <option value=""></option>
+                                <%for(el of quizzes){ %>
+                                    <option value="<%=el.id%>">
+                                        <%=el.title%>
+                                    </option>
+                                    <%}%>
+                            </select>
+                        </label>
+
+                        <label for="tag_id">
+                            tag
+                            <select name="tag_id">
+                                <option value=""></option>
+                                <%for(el of tags){ %>
+                                    <option value="<%=el.id%>">
+                                        <%=el.name%>
+                                    </option>
+                                    <%}%>
+                            </select>
+                        </label>
+
+
+
+
+                        <button>Go</button>
+                    </form>
+                    <%# <form class="admin_post__add" method="POST" action="/admin/updateTag">
+                        <label for="tagName"></label>
+                        <input type="text" name="tagName">
+                        <button>Ajouter</button>
+                        </form>%>
         </div>
         <%- include('partials/footer') %>
