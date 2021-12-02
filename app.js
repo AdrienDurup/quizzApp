@@ -1,6 +1,6 @@
-import express from "express";
-import session from "express-session";
-import { router } from "./router";
+const express= require("express");
+const session= require("express-session");
+const router= require("./app/router");
 require("dotenv").config();
 
 const app = express();

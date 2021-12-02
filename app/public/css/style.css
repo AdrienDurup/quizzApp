@@ -30,6 +30,25 @@
     padding: 15px;
     margin: auto;
   }
+
+  .login_error{
+    text-align: center;
+    color: red;
+  }
+
+  /* .quizz_form__validation{
+
+  } */
+
+  .quizz__answer{
+
+  }
+  .quizz__answer--good{
+color: green;
+  }
+  .quizz__answer--bad{
+color: red;
+  }
   
   .level--beginner,
   .level--débutant {
@@ -103,4 +122,13 @@
   .a_unset,.a_unset:hover,.a_unset:focus,.a_unset:active,.a_unset:visited   {
     text-decoration: unset;
     color: unset;
+  }
+
+  /* ADMIN */
+
+  .admin_post__error_box{
+    color: red;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
   }

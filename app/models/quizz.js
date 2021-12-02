@@ -1,7 +1,7 @@
-import { sequelize } from "../database";
-import { DataTypes, Model } from "sequelize";
+const sequelize =require("../database");
+const { DataTypes, Model } =require("sequelize");
 
-export class Quizz extends Model {}
+class Quizz extends Model {}
 
 Quizz.init(
 	{
@@ -13,3 +13,4 @@ Quizz.init(
 		tableName: "quizz",
 	}
 );
+module.exports=Quizz;
