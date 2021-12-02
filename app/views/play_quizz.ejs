@@ -22,6 +22,7 @@
             <% } %>
     </div>
 
+    <form method="POST" action="/quizz/<%=result.id%>">
     <div class="row">
         <% for (const element of result.questions){%>
             <div class="col-12">
@@ -32,14 +33,18 @@
                     <%=element.question%>
                 </h4>
                 <ol>
-                    <% for (const [index, el] of element.answers.entries()){%>
+                    <% for (const el of element.answers){%>
                         <li>
+                            <input type="radio" name="<%=element.id%>" value="<%=el.id%>" checked>
                             <%=el.description%>
                         </li>
-                        <% } %>
+                        <%}%>
                 </ol>
             </div>
             <%}%>
+            <button class="quizz_form__validation btn btn-lg btn-primary btn-block">Envoyer</button>
+        </form>
+
     </div>
 
     <%- include('partials/footer') %>

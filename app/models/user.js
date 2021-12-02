@@ -1,7 +1,8 @@
-import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../database";
+const sequelize =require("../database");
+const { DataTypes, Model } =require("sequelize");
 
-export class User extends Model {
+
+class User extends Model {
     get fullname() {
         return `${this.firstname} ${this.lastname}`;
     }
@@ -25,3 +26,4 @@ User.init(
 		tableName: "user",
 	}
 );
+module.exports=User;

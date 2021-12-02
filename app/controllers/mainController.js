@@ -1,8 +1,11 @@
-import { index } from "../models";
+// const { index } =require("../models");
+const {Quizz,Tag}=require("../models");
 
-export const mainController = {
+/*
+ TODO try catch */
+const mainController = {
     root: async (req, res) => {
-        let result = await index.Quizz.findAll(
+        let result = await Quizz.findAll(
             {
                 include: 'author',
             }
@@ -10,25 +13,13 @@ export const mainController = {
         res.status(200).render("index", { result });
     },
 
-    quizzPage: async (req, res) => {
-        let result = await index.Quizz.findByPk(Number(req.params.id), {
-            include: ['tags', 'author', {
-                association: "questions",
-                include: ['level', 'answers']
-            }],
-
-        });
-        res.status(200).render("quizz", { result });
-
-    },
-
     tagsPage: async (req, res) => {
-        let result = await index.Tag.findAll();
+        let result = await Tag.findAll();
         res.status(200).render("tags", { result });
     },
 
     tagContentPage: async (req, res) => {
-        let result = await index.Tag.findByPk(Number(req.params.tag), {
+        let result = await Tag.findByPk(Number(req.params.tag), {
             include: {
                 association: 'quizzes',
                 include: 'author'
@@ -44,4 +35,4 @@ export const mainController = {
         res.render('login')
     }, 
 }
-
+module.exports=mainController;

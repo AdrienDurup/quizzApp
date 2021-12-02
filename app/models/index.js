@@ -1,9 +1,9 @@
-import { Answer } from "./answer";
-import { Level } from "./level";
-import { Question } from "./question";
-import { Quizz } from "./quizz";
-import { Tag } from "./tag";
-import { User } from "./user";
+const Answer = require('./answer');
+const Level = require('./level');
+const Question = require('./question');
+const Quizz = require('./quizz');
+const Tag = require('./tag');
+const User = require('./user');
 
 User.hasMany(Quizz, {
 	foreignKey: "user_id",
@@ -64,7 +64,7 @@ Question.belongsTo(Answer, {
 	as: "good_answer",
 });
 
-export const index = {
+const index = {
 	Answer,
 	Level,
 	Question,
@@ -72,3 +72,4 @@ export const index = {
 	Tag,
 	User,
 };
+module.exports=index;
